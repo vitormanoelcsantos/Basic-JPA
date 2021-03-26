@@ -1,0 +1,46 @@
+plugins {
+	id 'org.springframework.boot' version '2.4.4'
+	id 'io.spring.dependency-management' version '1.0.11.RELEASE'
+	id 'java'
+}
+
+group = 'com.one.innovation.digital'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '11'
+
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+	implementation 'org.springframework.boot:spring-boot-starter'
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+
+	// API que valida as annotations(especificações)
+	// https://mvnrepository.com/artifact/javax.persistence/javax.persistence-api
+    // implementation group: 'javax.persistence', name: 'javax.persistence-api', version: '2.2'
+
+	// Driver JDBC que será utilizado pelos frameworks que implementam o JPA
+	// https://mvnrepository.com/artifact/mysql/mysql-connector-java
+	implementation group: 'mysql', name: 'mysql-connector-java', version: '8.0.23'
+
+
+	// Essas sao as implementacoes do JPA
+	// (Hibernate e EclipseLink) e o automatizador de criacao de Metamodels
+
+	// Implementacao Hibernate
+	// https://mvnrepository.com/artifact/org.hibernate/hibernate-core
+	 compile group: 'org.hibernate', name: 'hibernate-core', version: '5.4.12.Final'
+
+	// Implementacao EclipseLink
+	// https://mvnrepository.com/artifact/org.eclipse.persistence/eclipselink
+	//compile group: 'org.eclipse.persistence', name: 'eclipselink', version: '2.7.6'
+
+	// Automatizador de criacao de Metamodels
+	// https://mvnrepository.com/artifact/org.hibernate/hibernate-jpamodelgen
+	annotationProcessor('org.hibernate:hibernate-jpamodelgen:5.4.13.Final')
+}
+
+test {
+	useJUnitPlatform()
+}
